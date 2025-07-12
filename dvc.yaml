@@ -61,4 +61,4 @@ stages:
     - ./models/mb_kmeans.joblib
     - ./models/scaler.joblib
     outs:
-    - .data/external/plot_data.csv
+    - ./data/external/plot_data.csv

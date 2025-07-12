@@ -112,3 +112,27 @@ stages:
       hash: md5
       md5: e8e8696b1a70c8e929e302418f4af05c
       size: 3748
+  plot_data:
+    cmd: python ./src/visualization/plot_data.py
+    deps:
+    - path: ./data/interim/df_without_outliers.csv
+      hash: md5
+      md5: dfd723e2f538f5475039d72d42c235d2
+      size: 1924079864
+    - path: ./models/mb_kmeans.joblib
+      hash: md5
+      md5: c09bca6a2d0f6d0c648777b67acce751
+      size: 143771
+    - path: ./models/scaler.joblib
+      hash: md5
+      md5: cf2c91f3d39deba23298c30d93d06ce6
+      size: 951
+    - path: ./src/visualization/plot_data.py
+      hash: md5
+      md5: 210d0ec992e2cbc00bd89339ea3b4c54
+      size: 2660
+    outs:
+    - path: ./data/external/plot_data.csv
+      hash: md5
+      md5: 39ae3c00963e2daf1f195a14f7aa62f0
+      size: 608027
