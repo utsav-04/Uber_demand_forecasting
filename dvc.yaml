@@ -35,3 +35,30 @@ stages:
     outs:
       - ./models/encoder.joblib
       - ./models/model.joblib
+
+  evaluate:
+    cmd: python ./src/models/evaluate.py
+    deps:
+      - ./src/models/evaluate.py
+      - ./models/encoder.joblib
+      - ./models/model.joblib
+      - ./data/processed/test.csv
+      - ./data/processed/train.csv
+    outs:
+      - ./run_information.json
+  
+  register_model:
+    cmd: python ./src/models/register_model.py
+    deps:
+      - ./src/models/register_model.py
+      - ./run_information.json
+
+  plot_data:
+    cmd: python ./src/visualization/plot_data.py
+    deps:
+    - ./src/visualization/plot_data.py
+    - ./data/interim/df_without_outliers.csv
+    - ./models/mb_kmeans.joblib
+    - ./models/scaler.joblib
+    outs:
+    - .data/external/plot_data.csv
